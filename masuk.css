@@ -1,0 +1,207 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #ffffff; /* putih bersih */
+}
+
+.header-wrapper {
+  background-color: #5EABD6;
+  padding: 20px 0;
+}
+
+.navbar {
+  background: white;
+  border-radius: 40px;
+  padding: 12px 32px;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  width: 28px;
+  height: 28px;
+}
+
+.logo span {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #2d2d2d;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #a67de9;
+}
+
+/* Konten Utama */
+.content {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* Tabel Perilaku */
+.tabel-perilaku {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+.tabel-perilaku::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(to right, #a67de9, #5EABD6);
+}
+
+.tabel-perilaku h3 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.tabel-perilaku p,
+.tabel-perilaku h4 {
+  line-height: 1.8;
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* Tabel */
+.tabel-perilaku table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  font-size: 16px;
+}
+
+.tabel-perilaku table th,
+.tabel-perilaku table td {
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease;
+}
+
+.tabel-perilaku table th {
+  background-color: #5EABD6;
+  color: white;
+  font-weight: 600;
+}
+
+.tabel-perilaku table tr:hover td {
+  background-color: #f5f7ff;
+}
+
+/* Jam Belajar */
+.jam-belajar {
+  margin-top: 28px;
+  margin-bottom: 28px; 
+  background-color: #edeef8;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+
+.baris {
+  display: grid;
+  grid-template-columns: 160px 10px 1fr;
+  align-items: flex-start;
+}
+
+.kolom {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.kiri {
+  font-weight: 600;
+  color: #333;
+}
+
+.titikdua {
+  text-align: center;
+  color: #999;
+}
+
+.kanan {
+  color: #555;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .tabel-perilaku {
+    padding: 30px 20px;
+    font-size: 15px;
+  }
+
+  .tabel-perilaku table th,
+  .tabel-perilaku table td {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .jam-belajar {
+    font-size: 15px;
+  }
+
+  .baris {
+    grid-template-columns: 120px 10px 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

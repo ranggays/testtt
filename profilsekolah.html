@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Sekolah</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="profilsekolah.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header/Navbar -->
+<div class="header-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <img src="image.png" alt="Logo" />
+        <span>SMAN 1 KARANGAN</span>
+      </div>
+      <nav class="nav-links">
+        <a href="home.html" class="active">Home</a>
+        <a href="list-pelanggaran.html">List Pelanggaran</a>
+        <a href="rekapitulasi.html">Rekap Pelanggaran</a>
+        <a href="info.html">Info ▾</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <img class="slide" src="gambar-sekolah.jpg" alt="Slide 1" />
+    <img class="slide" src="gambar-sekolah2.jpeg" alt="Slide 2" />
+    <img class="slide" src="gambar-sekolah.jpg" alt="Slide 3" />
+  </div>
+
+  <!-- Konten Profil Sekolah -->
+  <section class="profilsekolah">
+    <div class="profil-container">
+      <h1><i class="fas fa-school"></i> Sejarah Sekolah</h1>
+      <p>
+        <strong>SMA Negeri 1 Karangan</strong> atau yang lebih dikenal dengan <strong>SMANESKA</strong> merupakan salah satu sekolah menengah atas negeri yang terletak di Jl. Raya Trenggalek – Ponorogo Km. 3, Kecamatan Karangan, Kabupaten Trenggalek, Jawa Timur.
+      </p>
+      <p>
+        Sekolah ini berdiri sejak <strong>1 Juli 1991</strong> sebagai hasil dari alih fungsi Sekolah Pendidikan Guru (SPG) Negeri Trenggalek, seiring dengan program pemerintah dalam peningkatan kualitas tenaga kependidikan yang mengharuskan guru SD memiliki pendidikan minimal jenjang D1.
+      </p>
+      <p>
+        Secara administratif, SMAN 1 Karangan berstatus sebagai sekolah negeri di bawah naungan Pemerintah Daerah Kabupaten Trenggalek dan Dinas Pendidikan Provinsi Jawa Timur. Sekolah ini telah terakreditasi <strong>A</strong> dan menyelenggarakan pendidikan menggunakan <strong>Kurikulum Merdeka</strong>.
+      </p>
+      <p>
+        Dengan luas lahan mencapai sekitar <strong>32.000 m²</strong>, SMAN 1 Karangan dilengkapi fasilitas penunjang seperti ruang kelas representatif, laboratorium komputer dan IPA, perpustakaan, ruang olahraga, serta internet pendukung pembelajaran digital.
+      </p>
+      <p>
+        Sekolah ini juga memiliki sistem administrasi yang mulai bertransformasi menuju <strong>digitalisasi</strong> untuk mendukung efisiensi layanan pendidikan. Dalam beberapa tahun terakhir, SMAN 1 Karangan menunjukkan prestasi membanggakan baik akademik maupun non-akademik.
+      </p>
+    </div>
+  </section>
+
+  <!-- Script Dropdown -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const dropdownToggle = document.querySelector('.dropdown-toggle');
+      const dropdown = document.querySelector('.dropdown');
+
+      dropdownToggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+      });
+
+      window.addEventListener('click', function (e) {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('open');
+        }
+      });
+    });
+  </script>
+
+  <!-- Script Slideshow -->
+  <script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlides() {
+      slides.forEach((slide, i) => {
+        slide.style.display = "none";
+      });
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 4000); // Ganti slide tiap 4 detik
+    }
+
+    showSlides();
+  </script>
+</body>
+</html>

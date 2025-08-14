@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visi & Misi</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="visi-misi.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="header-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <img src="image.png" alt="Logo" />
+        <span>SMAN 1 KARANGAN</span>
+      </div>
+      <nav class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="list-pelanggaran.html">List Pelanggaran</a>
+        <a href="rekapitulasi.html">Rekap Pelanggaran</a>
+        <a href="info.html" class="active">Info ▾</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Konten Visi Misi -->
+  <section class="visi-misi">
+    <div class="container">
+      <div class="box visi-box">
+        <div class="icon">
+          <i class="fas fa-eye"></i>
+        </div>
+        <div class="text-content">
+          <h2>Visi</h2>
+          <p class="visi-text">
+            MANTAP BERKARYA NYATA <br />
+            (Beriman, Bertaqwa, Berprestasi, Berkarakter dan Berbudaya Lingkungan yang Nyaman dan Tertata)
+          </p>
+        </div>
+      </div>
+
+      <div class="box misi-box">
+        <div class="icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+        <div class="text-content">
+          <h2>Misi</h2>
+          <ul class="misi-list">
+            <li>Membentuk warga sekolah yang beriman dan bertaqwa kepada Tuhan Yang Maha Esa serta berbudi pekerti.</li>
+            <li>Mengembangkan potensi akademik dan non-akademik untuk bersaing di tingkat kabupaten, provinsi dan nasional.</li>
+            <li>Menyelenggarakan sistem pendidikan yang mendorong aktualisasi kompetensi peserta didik yang berkarakter.</li>
+            <li>Menumbuhkembangkan kecintaan pada budaya bangsa dan kepedulian terhadap sesama dan lingkungan hidup.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional Dropdown Script (if needed) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.querySelector('.dropdown-toggle');
+      const menu = document.querySelector('.dropdown');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', function (e) {
+          e.preventDefault();
+          menu.classList.toggle('open');
+        });
+
+        window.addEventListener('click', function (e) {
+          if (!menu.contains(e.target)) {
+            menu.classList.remove('open');
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
