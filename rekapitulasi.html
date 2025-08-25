@@ -4,28 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rekapitulasi</title>
+  <link rel="stylesheet" href="rekapitulasi.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Basic styling - add your rekapitulasi.css styles here */
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
     }
-
+    
     .header-wrapper {
-      background-color: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
+    
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -34,163 +31,98 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-
+    
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
+    
     .logo img {
       width: 40px;
       height: 40px;
     }
-
-    .logo span {
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #2c3e50;
-    }
-
+    
     .nav-links {
       display: flex;
       gap: 2rem;
     }
-
+    
     .nav-links a {
       text-decoration: none;
-      color: #555;
-      font-weight: 500;
+      color: #333;
       padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      border-radius: 4px;
     }
-
-    .nav-links a:hover,
+    
     .nav-links a.active {
-      background-color: #3498db;
+      background-color: #007bff;
       color: white;
     }
-
+    
     .main-content {
       max-width: 1200px;
       margin: 2rem auto;
       padding: 0 2rem;
     }
-
+    
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2rem;
     }
-
+    
     .header h2 {
-      color: #2c3e50;
-      font-size: 1.5rem;
+      margin: 0;
+      color: #333;
     }
-
-    #btnOpenModal {
-      background: linear-gradient(135deg, #3498db, #2980b9);
+    
+    button {
+      background-color: #007bff;
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
       cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      font-size: 14px;
     }
-
-    #btnOpenModal:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+    
+    button:hover {
+      background-color: #0056b3;
     }
-
-    #rekapArea {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
-
+    
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 1rem;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-
+    
     table th,
     table td {
       padding: 12px;
       text-align: left;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #ddd;
+      color: #333;
     }
-
+    
     table th {
-      background-color: #f8f9fa;
-      font-weight: 600;
-      color: #2c3e50;
-    }
-
-    table tr:hover {
-      background-color: #f8f9fa;
-    }
-
-    .badge {
-      padding: 4px 8px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .badge.ringan {
-      background-color: #d4edda;
-      color: #155724;
-    }
-
-    .badge.sedang {
-      background-color: #fff3cd;
-      color: #856404;
-    }
-
-    .badge.berat {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-
-    .badge.sangat-berat {
-      background-color: #f5c6cb;
-      color: #721c24;
-    }
-
-    #downloadPDF {
-      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      background-color: #007bff;
       color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      cursor: pointer;
       font-weight: 600;
-      transition: all 0.3s ease;
     }
-
-    #downloadPDF:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    
+    table tr:nth-child(even) {
+      background-color: #f8f9fa;
     }
-
-    #emptyState {
-      text-align: center;
-      padding: 3rem;
-      color: #666;
+    
+    table tr:hover {
+      background-color: #e9ecef;
     }
-
-    #emptyState img {
-      opacity: 0.7;
-      margin-bottom: 1rem;
-    }
-
+    
     .modal {
       display: none;
       position: fixed;
@@ -201,148 +133,118 @@
       height: 100%;
       background-color: rgba(0,0,0,0.5);
     }
-
+    
     .modal-content {
       background-color: white;
       margin: 5% auto;
       padding: 2rem;
-      border-radius: 12px;
+      border-radius: 8px;
       width: 90%;
       max-width: 500px;
-      max-height: 80vh;
-      overflow-y: auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
     }
-
+    
     .close {
-      color: #999;
-      float: right;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
       font-size: 28px;
       font-weight: bold;
       cursor: pointer;
-      line-height: 1;
     }
-
-    .close:hover {
-      color: #333;
-    }
-
+    
     .modal-content label {
       display: block;
       margin: 1rem 0 0.5rem 0;
       font-weight: 600;
-      color: #2c3e50;
     }
-
+    
     .modal-content input,
     .modal-content select {
       width: 100%;
-      padding: 0.8rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
     }
-
-    .modal-content input:focus,
-    .modal-content select:focus {
-      outline: none;
-      border-color: #3498db;
-    }
-
-    #loginBtn,
-    #btnTambah {
-      background: linear-gradient(135deg, #27ae60, #219a52);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 1rem;
+    
+    .modal-content button {
       width: 100%;
-      transition: all 0.3s ease;
+      margin-top: 1rem;
     }
-
-    #loginBtn:hover,
-    #btnTambah:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+    
+    .badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
     }
-
-    .loading {
-      display: none;
+    
+    .badge.ringan {
+      background-color: #d4edda;
+      color: #155724;
+    }
+    
+    .badge.sedang {
+      background-color: #fff3cd;
+      color: #856404;
+    }
+    
+    .badge.berat {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+    
+    .badge.sangat-berat {
+      background-color: #d1ecf1;
+      color: #0c5460;
+    }
+    
+    #emptyState {
       text-align: center;
-      padding: 1rem;
+      padding: 3rem;
       color: #666;
     }
-
-    .loading.show {
-      display: block;
+    
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
     }
-
+    
     .error {
       background-color: #f8d7da;
       color: #721c24;
-      padding: 0.8rem;
-      border-radius: 8px;
+      padding: 1rem;
+      border-radius: 4px;
       margin: 1rem 0;
-      display: none;
     }
-
-    .error.show {
-      display: block;
-    }
-
-    .success {
-      background-color: #d4edda;
-      color: #155724;
-      padding: 0.8rem;
-      border-radius: 8px;
+    
+    .debug-info {
+      background-color: #e3f2fd;
+      border: 1px solid #2196f3;
+      padding: 1rem;
       margin: 1rem 0;
-      display: none;
-    }
-
-    .success.show {
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      table {
-        font-size: 0.9rem;
-      }
-
-      .modal-content {
-        margin: 2% auto;
-        width: 95%;
-      }
+      border-radius: 4px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <div class="header-wrapper">
+
+  
+<div class="header-wrapper">
     <header class="navbar">
       <div class="logo">
-        <img src="https://via.placeholder.com/40x40/3498db/ffffff?text=S" alt="Logo" />
+        <img src="image.png" alt="Logo" />
         <span>SMAN 1 KARANGAN</span>
       </div>
       <nav class="nav-links">
-        <a href="home.html">Home</a>
+        <a href="home.html" >Home</a>
         <a href="list-pelanggaran.html">List Pelanggaran</a>
         <a href="rekapitulasi.html" class="active">Rekap Pelanggaran</a>
         <a href="info.html">Info ▾</a>
@@ -357,33 +259,40 @@
       <button id="btnOpenModal">+ Add Data</button>
     </div>
 
-    <div class="loading" id="loadingIndicator">
-      <i class="fas fa-spinner fa-spin"></i> Memuat data...
+    <!-- Debug Information -->
+    <div id="debugInfo" class="debug-info" style="display: none;">
+      <h4>Debug Information:</h4>
+      <p id="debugText"></p>
     </div>
 
-    <div class="error" id="errorMessage"></div>
-    <div class="success" id="successMessage"></div>
+  <div id="rekapArea">
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Kelas</th>
+          <th>Tanggal</th>
+          <th>Pelanggaran</th>
+          <th>Skor</th>
+          <th>Kategori</th>
+          <th>Tindakan</th>
+        </tr>
+      </thead>
+      <tbody id="tabelHasil"></tbody>
+    </table>
 
-    <div id="rekapArea">
-      <table>
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Kelas</th>
-            <th>Tanggal</th>
-            <th>Pelanggaran</th>
-            <th>Skor</th>
-            <th>Kategori</th>
-            <th>Tindakan</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-        <tbody id="tabelHasil"></tbody>
-      </table>
     </div>
 
     <button id="downloadPDF" style="margin-top: 16px;">Download PDF</button>
+
+    <div id="loadingState" class="loading" style="display: none;">
+      <p>Loading data siswa...</p>
+    </div>
+
+    <div id="errorState" class="error" style="display: none;">
+      <p id="errorMessage"></p>
+    </div>
 
     <div id="emptyState">
       <img src="https://cdn-icons-png.flaticon.com/512/4076/4076508.png" width="150" alt="Empty illustration">
@@ -392,87 +301,277 @@
   </div>
 
   <div id="modalForm" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
+  <div class="modal-content">
+    <span class="close">&times;</span>
 
-      <!-- LOGIN ADMIN -->
-      <div id="loginSection">
-        <h3>Login Admin</h3>
-        <label for="username">Username Admin:</label>
-        <input type="text" id="username" placeholder="Masukkan username">
+    <!-- LOGIN ADMIN -->
+    <div id="loginSection">
+      <label for="username">Username Admin:</label>
+      <input type="text" id="username" placeholder="Masukkan username">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Masukkan password">
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Masukkan password">
 
-        <button id="loginBtn">Login</button>
-      </div>
+      <button id="loginBtn">Login</button>
+    </div>
 
-      <!-- FORM TAMBAH PELANGGARAN -->
-      <div id="formSection" style="display:none;">
-        <h3>Tambah Pelanggaran</h3>
-        
-        <!-- Jenjang (X, XI, XII) -->
-        <label for="jenjang">Jenjang:</label>
-        <select id="jenjang" onchange="updateKelas()">
-          <option value="">-- Pilih Jenjang --</option>
-          <option value="X">X</option>
-          <option value="XI">XI</option>
-          <option value="XII">XII</option>
-        </select>
-          
-        <!-- Kelas (A–I) -->
-        <label for="kelasSiswa">Kelas:</label>
-        <select id="kelasSiswa" onchange="updateNamaSiswa()" disabled>
-          <option value="">-- Pilih Kelas --</option>
-        </select>
+    <!-- FORM TAMBAH PELANGGARAN -->
+    <div id="formSection" style="display:none;">
+    <!-- Jenjang (X, XI, XII) -->
+    <label for="jenjang">Jenjang:</label>
+    <select id="jenjang" onchange="updateKelas()">
+      <option value="">-- Pilih Jenjang --</option>
+      <option value="X">X</option>
+      <option value="XI">XI</option>
+      <option value="XII">XII</option>
+    </select>
+      
+    <!-- Kelas (A–I) -->
+    <label for="kelasSiswa">Kelas:</label>
+    <select id="kelasSiswa" onchange="updateNamaSiswa()" disabled>
+      <option value="">-- Pilih Kelas --</option>
+    </select>
 
-        <!-- Nama Siswa (Dropdown) -->
-        <label for="namaSiswa">Nama Siswa:</label>
-        <select id="namaSiswa" required>
-          <option value="">-- Pilih Nama --</option>
-        </select>
+    <!-- Nama Siswa (Dropdown) -->
+    <label for="namaSiswa">Nama Siswa:</label>
+    <select id="namaSiswa" required>
+      <option value="">-- Pilih Nama --</option>
+    </select>
 
-        <!-- Tanggal -->
-        <label for="tanggal">Tanggal:</label>
-        <input type="date" id="tanggal">
+    <!-- Tanggal -->
+    <label for="tanggal">Tanggal:</label>
+    <input type="date" id="tanggal">
 
-        <label for="kategoriSelect">Kategori Pelanggaran:</label>
-        <select id="kategoriSelect">
-          <option value="">-- Pilih Kategori --</option>
-          <option value="sikap">Sikap Perilaku</option>
-          <option value="kedisiplinan">Kedisiplinan</option>
-          <option value="kerapian">Kerapian</option>
-        </select>
+      <label for="kategoriSelect">Kategori Pelanggaran:</label>
+      <select id="kategoriSelect">
+        <option value="">-- Pilih Kategori --</option>
+        <option value="sikap">Sikap Perilaku</option>
+        <option value="kedisiplinan">Kedisiplinan</option>
+        <option value="kerapian">Kerapian</option>
+      </select>
 
-        <label for="pelanggaranSelect">Jenis Pelanggaran:</label>
-        <select id="pelanggaranSelect">
-          <option value="">-- Pilih Pelanggaran --</option>
-        </select>
+      <label for="pelanggaranSelect">Jenis Pelanggaran:</label>
+      <select id="pelanggaranSelect">
+        <option value="">-- Pilih Pelanggaran --</option>
+      </select>
 
-        <button id="btnTambah">Tambah Pelanggaran</button>
-      </div>
+      <button id="btnTambah">Tambah Pelanggaran</button>
     </div>
   </div>
+</div>
 
   <script>
-    // SheetDB Configuration - REPLACE WITH YOUR SHEETDB API URL
-    const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/isi nde kene';
+    // SheetDB Configuration - GANTI DENGAN URL SHEETDB ANDA
+    const SHEETDB_URL = 'https://sheetdb.io/api/v1/latgs76bdloli';
+    
+    // Global variables
+    let siswaPerKelas = {};
+    let isDataLoaded = false;
 
-    // Student data per class
-    const siswaPerKelas = {
-      X: {
-        "A": ["ABELIA FIRNANDA PUTRI","AFRIZAL DIMAS ADITYA PUTRA","ALVITA ZAIDA RIATMANTO","ANDHIKA NADHIT WIDYADANA","ANEZKA NADINDRA ISNANTO","ARDIANTI TYAS MARTA","AURA MARZA GIAN PUTRI","AZRIEL RAFI PUTRA DEWANGGA","CALLYSTA ELFIDA FAIZIN","DELLA FIFTINE ARWIDYA RAHAYU","DEVAUZI WAHYU PRATAMA","DIFFANIA NASYWA VIOLLIN","ELMA AUSY HADIYAN PRASYANTI","FAHRI EKA PRASETYO","FARIDA NUR KHASANAH","GALIH DIVO DWIDEZCO","GRENANZA VILOVELLIAN MARTAFENA","JANELIA ALTA MINANTI","KINARA DWI PURWENI","LEO PUTRA RAMADHAN","MAULIDA NUR AINI FATIMATUSH ZAHRO","MUHAMMAD DAFFA ALFIN MANSUR","NAFISA HUWAIDA KARIMA","NATASYA NIYA SAFINA DEFTANENSI","PAMELA PRIANKA SISWOYO","PRADIPTA MULYA HARIPANCARA","QUEENZHA AUREL AUFANDINA","REKSA BINTANG KUMARA","RENZA ALYA NURUL NGAIN","ROMADLONI SAPUTRI","SATRIA GESANG MANGGALI","SEPTI AULIA RAHMADHANI","SYAINA FIRYAL KHANZA BALQIS","VICKY ALDIANSYAH","VIERRA DWI MAHARANI","ZAFIRA PUTRI SABRINA"],
-        "B": ["AGAM MAYUN SAMIRANA","AILEN AGUSTINE WIBOWO","ALYA AZZAHRA PUTRI","ANDIKA PUTRA PRATAMA","ANINDYA NAURA YUDISTIRA","ARIMBI LENTERA GEMALARAS","AURUM SALSABILA","AZRIL OKTAVIAN MALIK","CALYA IVANA GIYANITA","DESTA ZAIMU ADDAH","DIAN ROSIANDY","DINDA AYU PRATIWI","ELYSIA ELITA WIDYA WARDANY","FAIRUZ ZABADY","FERYUNDHA ZAINABIL AFAANIIN","GALIH WAHYU FRANTINO","INTAN ZAHRASITA AIRANI","JENNITA SIFA FIRDAUS","KHAYLILA ISNANIA PUTRI","MAULIDINA ASTI CHOIRUNNISA","MEILANO AVA MAHENDRA","MUHAMMAD DUTA FERDIANSYAH","NADINE VIVIA RENATA","NENCY CAHYA DEA LOVETA","PINASTI KEN LANDHUNGSIH","PRANAJA HADRA ADINATA","RAHMA OKKI DIAH RANGGA","RENDYKA MEYVANO PUTRA GIONTIKA","REVA LUTFIANA DEWI","SADINA MAHATMA NIRWASITA PRIYENDA","SHANDY AYU PUSPITASARI","SHELVIN RAYHAN WIMANDHA PUTRA","TAHTA ARIFAH NASTITI","VINA ABIERLIYA MARSANDA","VRADIKA CAHYA SAPUTRA","ZAHWA AQILA RAMADANI"]
-      },
-      XI: {
-        "A": ["ADHITYA RAIHAN SAPUTRA","ADYA DWI ARDINI","AGESTI FIRSTA AZZAHRA","ALDO DWI PUTRA","ALENTA NARA LIVA","AMELYA MARSYA FEBRIANTI","ASYIFA RAYHAN GUMILANG","BAGAS PRADIPA UNTARA","CICHA DISYANA PERMATASARI","DAVINO EKA PRATAMA","DHINDA PUTRI DONIKA","EKA SULISTRI RAHMADANI","FARID ADITYA PRATAMA","FERRY DWI KENCANA PUTRA","FRADIS TENTY REVILA","GALIH GINANJAR","GALUH KHOIRUNNISA","GHINA ZULFA ADILA","HANIN MADICHAH ADHA","ISMA IKA PERTIWI","JEVINCO DINDRA OGUSTA","KEYLA KARUNIA MAULIDYA","LAURA MARZA TWOENTA","MAYA DWI REGINA SOLIKHA","MUHAMMAD DONNY ALFIANSYAH","NADIANG PUTRI KINANTI","NINDITYA ALENCIA FITRI","NOVAL RAHMA YUDISTIRA","OLEGA SARAS ADELIA PRAMESTI","PUTRI MARSELA TRIA NINGSIH","RIFALDI AFDHIL RAHMAN","SELVIA SRI RAHAYU","SYAFA KAYLA NATANIA","TIARA CANDRA ASHARI","YANUAR AHMAD BINTANG MAULANA","ZASKYA NAILATUL MAROM"]
-      },
-      XII: {
-        "A": ["AFANDI PRATAMA","AHMAD DHUAN AGATHA","AL IKHSANDRIA ALIF RAMADHANI","ANISA CAHYA PUSPITA","A'QLI WAHYULISTYAWAN PUTRA","BINTANG ANUGERAH HADI","BUNGA KRISDA ARGASARI","CAHYO DWI FIRMANSYAH","DEVIANA JIHAN NATARA","ERLIA NANDITA NOVIANA","FABHI RIZA MULYA WANDANA PUTRA","FANDY ARYA WIDYADHANA","GARGA CIPTA HANDARU","JIMMY NANDA WIBAWA","JOAN GAYNELL FEBRIAN","KHALILA ANNASTASYA MEIROSSA PUTRI","LEOGA MARGASENA FATTAH","MARLA NOVA PRATIWI","MUHAMMAD AGHA NAUFAL FEBRYANNESAR","MUHAMMAD DANU PRAKOSO","MUHAMMAD EVAN SYAPUTRA","MUHAMMAD FARHAN SAIFUSSURUR","MUHAMMAD GHIFARI DHAVIANSYAH","NABILLA SUTRISNO","NAUFAL ZAKI ALKHALIFI","NAYSELLA LINTANG PRAMESWARI","RADO MARCHEL ANGGARA","RANGGA AJI PERDANA WIDIAMANGGALA","RENANTA PUTRI WIJAYA","RENDY AGUSTYAN","RIFA NASRUL HIDAYATULLOH","SALMA SEPTYANA KUSUMA AYUNINGTYAS","TASYA MINHATAL AINI","TEGUH PRIYO UTOMO","VANNISA APRILIA WIDIYANTIKA"]
+    // Debug function
+    function showDebug(message) {
+      console.log(message);
+      const debugDiv = document.getElementById('debugInfo');
+      const debugText = document.getElementById('debugText');
+      
+      if (debugDiv && debugText) {
+        debugDiv.style.display = 'block';
+        debugText.innerHTML = message;
       }
-    };
+    }
 
-    // Violation data
+    // Fungsi untuk debug semua keys di object pertama
+    function debugObjectKeys(data) {
+      if (data && data.length > 0) {
+        const firstRow = data[0];
+        const allKeys = Object.keys(firstRow);
+        console.log('All available keys in first row:', allKeys);
+        showDebug(`Available keys: ${allKeys.join(', ')}<br>Sample values:<br>${allKeys.slice(0, 5).map(key => `${key}: "${firstRow[key]}"`).join('<br>')}`);
+        return allKeys;
+      }
+      return [];
+    }
+
+    // Load student data from SheetDB
+    async function loadStudentData() {
+      document.getElementById('loadingState').style.display = 'block';
+      document.getElementById('errorState').style.display = 'none';
+      
+      try {
+        showDebug(`Mencoba mengakses SheetDB: ${SHEETDB_URL}`);
+        
+        const response = await fetch(SHEETDB_URL);
+        showDebug(`Response status: ${response.status}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        showDebug(`Data berhasil dimuat. Jumlah baris: ${data.length}<br>Sample data: ${JSON.stringify(data[0] || {}, null, 2)}`);
+        
+        // Debug semua keys yang tersedia
+        const availableKeys = debugObjectKeys(data);
+        
+        // Initialize structure
+        siswaPerKelas = {
+          X: {},
+          XI: {},
+          XII: {}
+        };
+        
+        // Process the data - coba berbagai kemungkinan nama kolom
+        data.forEach((row, index) => {
+          // Coba berbagai variasi nama kolom TERMASUK YANG ADA SPASI
+          const jenjang = row.Jenjang || row.jenjang || row.JENJANG || 
+                         row['Jenjang'] || row['jenjang'] || row['JENJANG'] ||
+                         row['Jenjang '] || row['jenjang '] || row['JENJANG '] ||  // DENGAN SPASI
+                         row['Jenjang  '] || row['jenjang  '] || row['JENJANG  '];  // DENGAN SPASI GANDA
+          
+          const kelas = row.Kelas || row.kelas || row.KELAS || 
+                       row['Kelas'] || row['kelas'] || row['KELAS'] ||
+                       row['Kelas '] || row['kelas '] || row['KELAS '] ||  // DENGAN SPASI
+                       row['Kelas  '] || row['kelas  '] || row['KELAS  '];  // DENGAN SPASI GANDA
+          
+          const nama = row['Nama Siswa'] || row['nama_siswa'] || row.nama || row.Nama || 
+                      row['NAMA SISWA'] || row['NAMA_SISWA'] || row.NAMA ||
+                      row['Nama'] || row['nama'] || row['NAMA'] ||
+                      row['Nama Siswa '] || row['NAMA SISWA '] ||  // DENGAN SPASI
+                      row['Nama Siswa  '] || row['NAMA SISWA  '];  // DENGAN SPASI GANDA
+          
+          if (index < 5) {
+            showDebug(`Row ${index}: jenjang="${jenjang}", kelas="${kelas}", nama="${nama}"`);
+          }
+          
+          if (jenjang && kelas && nama) {
+            // Bersihkan spasi dan pastikan jenjang valid
+            const cleanJenjang = jenjang.toString().trim();
+            const cleanKelas = kelas.toString().trim();
+            const cleanNama = nama.toString().trim();
+            
+            const validJenjang = ['X', 'XI', 'XII'].includes(cleanJenjang) ? cleanJenjang : null;
+            
+            if (validJenjang && cleanKelas && cleanNama) {
+              if (!siswaPerKelas[validJenjang][cleanKelas]) {
+                siswaPerKelas[validJenjang][cleanKelas] = [];
+              }
+              
+              siswaPerKelas[validJenjang][cleanKelas].push(cleanNama);
+              
+              // Debug untuk beberapa data pertama
+              if (index < 10) {
+                console.log(`Added: ${validJenjang} ${cleanKelas} - ${cleanNama}`);
+              }
+            }
+          }
+        });
+        
+        // Sort names alphabetically within each class
+        Object.keys(siswaPerKelas).forEach(jenjang => {
+          Object.keys(siswaPerKelas[jenjang]).forEach(kelas => {
+            siswaPerKelas[jenjang][kelas].sort();
+          });
+        });
+        
+        // Debug: tampilkan struktur data yang berhasil dimuat
+        let debugOutput = "Data siswa berhasil dimuat:<br>";
+        Object.keys(siswaPerKelas).forEach(jenjang => {
+          const kelasCount = Object.keys(siswaPerKelas[jenjang]).length;
+          const totalSiswa = Object.values(siswaPerKelas[jenjang]).reduce((sum, arr) => sum + arr.length, 0);
+          debugOutput += `${jenjang}: ${kelasCount} kelas, ${totalSiswa} siswa<br>`;
+          
+          // Tampilkan beberapa kelas sebagai contoh
+          Object.keys(siswaPerKelas[jenjang]).slice(0, 3).forEach(kelas => {
+            const siswaDiKelas = siswaPerKelas[jenjang][kelas].length;
+            debugOutput += `&nbsp;&nbsp;${jenjang} ${kelas}: ${siswaDiKelas} siswa<br>`;
+          });
+        });
+        
+        showDebug(debugOutput);
+        
+        isDataLoaded = true;
+        document.getElementById('loadingState').style.display = 'none';
+        
+      } catch (error) {
+        console.error('Error loading student data:', error);
+        showDebug(`Error: ${error.message}`);
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('errorMessage').textContent = 
+          `Gagal memuat data siswa: ${error.message}. Periksa URL SheetDB dan pastikan data dapat diakses.`;
+        
+        // Fallback to empty structure but with some test data for debugging
+        siswaPerKelas = {
+          X: { 
+            A: ['Test Siswa 1', 'Test Siswa 2'], 
+            B: ['Test Siswa 3', 'Test Siswa 4'], 
+            C: [], D: [], E: [], F: [], G: [], H: [], I: [] 
+          },
+          XI: { 
+            A: ['Test Siswa 5', 'Test Siswa 6'], 
+            B: [], C: [], D: [], E: [], F: [], G: [], H: [], I: [] 
+          },
+          XII: { 
+            A: ['Test Siswa 7', 'Test Siswa 8'], 
+            B: [], C: [], D: [], E: [], F: [], G: [], H: [], I: [] 
+          }
+        };
+        
+        showDebug("Menggunakan data test untuk debugging.");
+        isDataLoaded = true;
+      }
+    }
+
+    function updateKelas() {
+      const jenjang = document.getElementById("jenjang").value;
+      const kelasSelect = document.getElementById("kelasSiswa");
+      const namaSelect = document.getElementById("namaSiswa");
+
+      // Reset
+      kelasSelect.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+      namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+      kelasSelect.disabled = true;
+
+      console.log(`updateKelas called with jenjang: ${jenjang}`);
+      console.log('siswaPerKelas:', siswaPerKelas);
+
+      if (jenjang && siswaPerKelas[jenjang]) {
+        const kelasOptions = Object.keys(siswaPerKelas[jenjang]);
+        console.log(`Available kelas for ${jenjang}:`, kelasOptions);
+        
+        kelasOptions.forEach(function(kls) {
+          const siswaCount = siswaPerKelas[jenjang][kls].length;
+          const option = document.createElement("option");
+          option.value = kls;
+          option.text = `${jenjang} ${kls} (${siswaCount} siswa)`;
+          kelasSelect.add(option);
+        });
+        kelasSelect.disabled = false;
+      }
+    }
+
+    function updateNamaSiswa() {
+      const jenjang = document.getElementById("jenjang").value;
+      const kelas = document.getElementById("kelasSiswa").value;
+      const namaSelect = document.getElementById("namaSiswa");
+
+      namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+
+      console.log(`updateNamaSiswa called with jenjang: ${jenjang}, kelas: ${kelas}`);
+
+      if (jenjang && kelas && siswaPerKelas[jenjang] && siswaPerKelas[jenjang][kelas]) {
+        const daftarNama = siswaPerKelas[jenjang][kelas];
+        console.log(`Students in ${jenjang} ${kelas}:`, daftarNama);
+        
+        daftarNama.forEach(function(nama) {
+          const option = document.createElement("option");
+          option.value = nama;
+          option.text = nama;
+          namaSelect.add(option);
+        });
+      }
+    }
+
     const dataPelanggaran = {
       sikap: {
         "Mencoret-coret atau mengotori dinding, pintu, meja, kursi, pagar sekolah.": 10,
@@ -536,40 +635,44 @@
       }
     };
 
-    // Global variables
-    let isLoggedIn = false;
-    let violationData = [];
-
-    // DOM Elements
+    const dataSiswa = {};
     const modal = document.getElementById("modalForm");
     const btnOpen = document.getElementById("btnOpenModal");
     const btnClose = document.querySelector(".close");
     const kategoriSelect = document.getElementById("kategoriSelect");
     const pelanggaranSelect = document.getElementById("pelanggaranSelect");
-    const loadingIndicator = document.getElementById("loadingIndicator");
-    const errorMessage = document.getElementById("errorMessage");
-    const successMessage = document.getElementById("successMessage");
 
-    // Utility functions
-    function showLoading() {
-      loadingIndicator.classList.add('show');
-    }
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      loadStudentData();
+    });
 
-    function hideLoading() {
-      loadingIndicator.classList.remove('show');
-    }
+    btnOpen.onclick = () => {
+      if (!isDataLoaded) {
+        alert('Data siswa sedang dimuat. Silakan tunggu sebentar.');
+        return;
+      }
+      modal.style.display = "block"; 
+      document.getElementById("tanggal").valueAsDate = new Date(); 
+    };
+    
+    btnClose.onclick = () => modal.style.display = "none";
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
 
-    function showError(message) {
-      errorMessage.textContent = message;
-      errorMessage.classList.add('show');
-      setTimeout(() => errorMessage.classList.remove('show'), 5000);
-    }
-
-    function showSuccess(message) {
-      successMessage.textContent = message;
-      successMessage.classList.add('show');
-      setTimeout(() => successMessage.classList.remove('show'), 3000);
-    }
+    kategoriSelect.addEventListener("change", () => {
+      const kategori = kategoriSelect.value;
+      pelanggaranSelect.innerHTML = '<option value="">-- Pilih Pelanggaran --</option>';
+      if (dataPelanggaran[kategori]) {
+        for (const jenis in dataPelanggaran[kategori]) {
+          const option = document.createElement("option");
+          option.value = jenis;
+          option.textContent = jenis;
+          pelanggaranSelect.appendChild(option);
+        }
+      }
+    });
 
     function kategoriSkor(skor) {
       if (skor <= 35) return '<span class="badge ringan">Ringan</span>';
@@ -588,236 +691,170 @@
       return "Dikembalikan ke Orang Tua";
     }
 
-    // Student selection functions
-    function updateKelas() {
-      const jenjang = document.getElementById("jenjang").value;
-      const kelasSelect = document.getElementById("kelasSiswa");
-      const namaSelect = document.getElementById("namaSiswa");
+function tambahPelanggaran() {
+  const nama = document.getElementById("namaSiswa").value.trim();
+  const jenjang = document.getElementById("jenjang").value.trim();
+  const kelas = document.getElementById("kelasSiswa").value.trim();
+  const tanggal = document.getElementById("tanggal").value;
+  const kategori = kategoriSelect.value;
+  const jenis = pelanggaranSelect.value;
+  const skor = dataPelanggaran[kategori]?.[jenis] || 0;
 
-      kelasSelect.innerHTML = '<option value="">-- Pilih Kelas --</option>';
-      namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
-      kelasSelect.disabled = true;
+  if (!nama || !kelas || !tanggal || !kategori || !jenis) {
+    alert("Harap isi semua data termasuk tanggal.");
+    return;
+  }
 
-      if (siswaPerKelas[jenjang]) {
-        Object.keys(siswaPerKelas[jenjang]).forEach(function(kls) {
-          const option = document.createElement("option");
-          option.value = kls;
-          option.text = jenjang + " " + kls;
-          kelasSelect.add(option);
-        });
-        kelasSelect.disabled = false;
+  const keySiswa = `${nama.toLowerCase()}-${jenjang}${kelas}`;
+  const kelasDisplay = `${jenjang} ${kelas}`;
+
+if (!dataSiswa[keySiswa]) {
+  dataSiswa[keySiswa] = {
+    skor: skor,
+    pelanggaran: [{ tanggal, jenis, skor }]
+  };
+} else {
+  dataSiswa[keySiswa].skor += skor;
+  dataSiswa[keySiswa].pelanggaran.push({ tanggal, jenis, skor });
+}
+
+const daftarPelanggaran = dataSiswa[keySiswa].pelanggaran
+  .map(p => p.jenis)
+  .join("<br>");
+
+  const tbody = document.getElementById("tabelHasil");
+
+  let existingRow = Array.from(tbody.rows).find(
+    row => row.cells[1].textContent.toLowerCase() === nama.toLowerCase() &&
+           row.cells[2].textContent.toLowerCase() === kelasDisplay.toLowerCase()
+  );
+
+if (existingRow) {
+  existingRow.cells[4].innerHTML = daftarPelanggaran;
+  existingRow.cells[5].textContent = dataSiswa[keySiswa].skor;
+  existingRow.cells[6].innerHTML = kategoriSkor(dataSiswa[keySiswa].skor);
+  existingRow.cells[7].textContent = tindakan(dataSiswa[keySiswa].skor);
+} else {
+  const no = tbody.rows.length + 1;
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${no}</td>
+    <td>${nama}</td>
+    <td>${kelasDisplay}</td>
+    <td>${tanggal}</td>
+    <td>${daftarPelanggaran}</td>
+    <td>${dataSiswa[keySiswa].skor}</td>
+    <td>${kategoriSkor(dataSiswa[keySiswa].skor)}</td>
+    <td>${tindakan(dataSiswa[keySiswa].skor)}</td>
+  `;
+  tbody.appendChild(row);
+}
+
+  document.getElementById("emptyState").style.display = "none";
+
+  // Reset form
+  document.getElementById("jenjang").value = "";
+  document.getElementById("kelasSiswa").innerHTML = '<option value="">-- Pilih Kelas --</option>';
+  document.getElementById("kelasSiswa").disabled = true;
+  document.getElementById("namaSiswa").innerHTML = '<option value="">-- Pilih Nama --</option>';
+  document.getElementById("tanggal").value = "";
+  kategoriSelect.value = "";
+  pelanggaranSelect.innerHTML = '<option value="">-- Pilih Pelanggaran --</option>';
+  modal.style.display = "none";
+}
+
+  document.getElementById("btnTambah").addEventListener("click", tambahPelanggaran);
+  document.getElementById("downloadPDF").addEventListener("click", () => {
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF("p", "mm", "a4");
+
+  const headers = [["No", "Nama", "Kelas", "Tanggal", "Pelanggaran", "Skor", "Kategori", "Tindakan"]];
+  const body = [];
+
+  const rows = document.querySelectorAll("#tabelHasil tr");
+  rows.forEach((row) => {
+    const rowData = Array.from(row.cells).map(cell => cell.textContent.trim());
+    body.push(rowData);
+  });
+
+  const today = new Date();
+const tanggalCetak = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth()+1).toString().padStart(2, '0')}-${today.getFullYear()}`;
+
+const img = new Image();
+img.src = "image.png"; // Logo sekolah
+
+img.onload = () => {
+  const pdf = new jsPDF();
+
+  // Header
+  pdf.addImage(img, "PNG", 15, 10, 25, 25);
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(14);
+  pdf.text("REKAPITULASI PELANGGARAN SISWA", 105, 15, { align: "center" });
+
+  pdf.setFontSize(12);
+  pdf.text("SMAN 1 KARANGAN", 105, 22, { align: "center" });
+
+  pdf.setFont("helvetica", "normal");
+  pdf.setFontSize(10);
+  pdf.text("Jl. Raya Karangan No. 45, Trenggalek, Jawa Timur", 105, 28, { align: "center" });
+  pdf.text("Tel: (0355) 791540, E-mail: sman1karangan@email.sch.id", 105, 33, { align: "center" });
+
+  pdf.setDrawColor(0);
+  pdf.setLineWidth(0.5);
+  pdf.line(15, 37, 195, 37);
+
+  // Tanggal cetak
+  pdf.setFontSize(10);
+  pdf.text(`Tanggal Cetak : ${tanggalCetak}`, 15, 43);
+
+  // Tabel data pelanggaran
+  pdf.autoTable({
+    head: headers,
+    body: body,
+    startY: 48,
+    styles: { fontSize: 9, cellPadding: 3 },
+    headStyles: { fillColor: [41, 128, 185] },
+    theme: 'grid'
+  });
+
+// Ukuran halaman
+const pageHeight = pdf.internal.pageSize.getHeight();
+const ttdY = pageHeight - 65;
+
+// Titik tengah kolom tanda tangan
+const centerKiri = 55;   // 15 + (80 / 2)
+const centerKanan = 170; // 140 + (60 / 2)
+
+pdf.setFontSize(10);
+
+// Kepala Sekolah - Rata Tengah
+pdf.text(`Karangan, ${tanggalCetak}`, centerKiri, ttdY, { align: 'center' });
+pdf.text("Kepala SMAN 1 Karangan,", centerKiri, ttdY + 6, { align: 'center' });
+pdf.text("AGUS JOKO SANTOSO,S.Pd", centerKiri, ttdY + 26, { align: 'center' });
+pdf.text("NIP. 19670921 199003 1 005", centerKiri, ttdY + 31, { align: 'center' });
+
+// Tim Tata Tertib - Rata Tengah
+pdf.text("Mengetahui,", centerKanan, ttdY, { align: 'center' });
+pdf.text("Tim Tata Tertib,", centerKanan, ttdY + 6, { align: 'center' });
+pdf.text("MAHFUD, S.Pd.", centerKanan, ttdY + 26, { align: 'center' });
+pdf.text("NIP. 196907201995121002", centerKanan, ttdY + 31, { align: 'center' });
+
+
+  // Simpan PDF
+  pdf.save("rekap_pelanggaran.pdf");
+ };
+
+});
+
+  let isLoggedIn = false;
+
+    document.getElementById("btnOpenModal").onclick = () => {
+      if (!isDataLoaded) {
+        alert('Data siswa sedang dimuat. Silakan tunggu sebentar.');
+        return;
       }
-    }
-
-    function updateNamaSiswa() {
-      const jenjang = document.getElementById("jenjang").value;
-      const kelas = document.getElementById("kelasSiswa").value;
-      const namaSelect = document.getElementById("namaSiswa");
-
-      namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
-
-      if (siswaPerKelas[jenjang] && siswaPerKelas[jenjang][kelas]) {
-        siswaPerKelas[jenjang][kelas].forEach(function(nama) {
-          const option = document.createElement("option");
-          option.value = nama;
-          option.text = nama;
-          namaSelect.add(option);
-        });
-      }
-    }
-
-    // SheetDB API functions
-    async function loadDataFromSheet() {
-      try {
-        showLoading();
-        const response = await fetch(SHEETDB_API_URL);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        violationData = data || [];
-        renderTable();
-        hideLoading();
-      } catch (error) {
-        console.error('Error loading data:', error);
-        showError('Gagal memuat data dari database. Periksa koneksi internet atau URL SheetDB.');
-        hideLoading();
-      }
-    }
-
-    async function saveToSheet(newViolation) {
-      try {
-        showLoading();
-        const response = await fetch(SHEETDB_API_URL, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            data: [newViolation]
-          })
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        showSuccess('Data berhasil disimpan!');
-        hideLoading();
-        return result;
-      } catch (error) {
-        console.error('Error saving data:', error);
-        showError('Gagal menyimpan data. Periksa koneksi internet atau URL SheetDB.');
-        hideLoading();
-        throw error;
-      }
-    }
-
-    async function updateStudentInSheet(studentKey, updatedData) {
-      try {
-        showLoading();
-        
-        // First, try to update existing record
-        const response = await fetch(`${SHEETDB_API_URL}/nama/${updatedData.nama}/kelas/${updatedData.kelas}`, {
-          method: 'PATCH',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            data: updatedData
-          })
-        });
-
-        if (!response.ok) {
-          // If update fails, try to create new record
-          return await saveToSheet(updatedData);
-        }
-
-        const result = await response.json();
-        showSuccess('Data berhasil diperbarui!');
-        hideLoading();
-        return result;
-      } catch (error) {
-        console.error('Error updating data:', error);
-        showError('Gagal memperbarui data.');
-        hideLoading();
-        throw error;
-      }
-    }
-
-    async function deleteFromSheet(id) {
-      try {
-        showLoading();
-        const response = await fetch(`${SHEETDB_API_URL}/id/${id}`, {
-          method: 'DELETE'
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        showSuccess('Data berhasil dihapus!');
-        hideLoading();
-        return true;
-      } catch (error) {
-        console.error('Error deleting data:', error);
-        showError('Gagal menghapus data.');
-        hideLoading();
-        return false;
-      }
-    }
-
-    // Render table from violation data
-    function renderTable() {
-      const tbody = document.getElementById("tabelHasil");
-      const emptyState = document.getElementById("emptyState");
       
-      tbody.innerHTML = "";
-
-      if (violationData.length === 0) {
-        emptyState.style.display = "block";
-        return;
-      }
-
-      emptyState.style.display = "none";
-
-      // Group violations by student
-      const groupedData = {};
-      violationData.forEach(violation => {
-        const key = `${violation.nama}-${violation.kelas}`;
-        if (!groupedData[key]) {
-          groupedData[key] = {
-            nama: violation.nama,
-            kelas: violation.kelas,
-            violations: [],
-            totalSkor: 0
-          };
-        }
-        groupedData[key].violations.push(violation);
-        groupedData[key].totalSkor += parseInt(violation.skor) || 0;
-      });
-
-      // Render grouped data
-      let no = 1;
-      Object.values(groupedData).forEach(student => {
-        const row = document.createElement("tr");
-        
-        const latestViolation = student.violations[student.violations.length - 1];
-        const violationList = student.violations
-          .map(v => `${v.tanggal}: ${v.jenis_pelanggaran}`)
-          .join("<br>");
-
-        row.innerHTML = `
-          <td>${no++}</td>
-          <td>${student.nama}</td>
-          <td>${student.kelas}</td>
-          <td>${latestViolation.tanggal}</td>
-          <td>${violationList}</td>
-          <td>${student.totalSkor}</td>
-          <td>${kategoriSkor(student.totalSkor)}</td>
-          <td>${tindakan(student.totalSkor)}</td>
-          <td>
-            <button onclick="deleteStudent('${student.nama}', '${student.kelas}')" 
-                    style="background: #e74c3c; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">
-              <i class="fas fa-trash"></i>
-            </button>
-          </td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
-
-    // Delete student function
-    async function deleteStudent(nama, kelas) {
-      if (!confirm(`Hapus semua data pelanggaran untuk ${nama} (${kelas})?`)) {
-        return;
-      }
-
-      try {
-        // Find and delete all violations for this student
-        const studentViolations = violationData.filter(v => v.nama === nama && v.kelas === kelas);
-        
-        for (const violation of studentViolations) {
-          if (violation.id) {
-            await deleteFromSheet(violation.id);
-          }
-        }
-
-        // Remove from local data
-        violationData = violationData.filter(v => !(v.nama === nama && v.kelas === kelas));
-        renderTable();
-      } catch (error) {
-        console.error('Error deleting student:', error);
-      }
-    }
-
-    // Modal functions
-    btnOpen.onclick = () => {
       modal.style.display = "block";
 
       if (isLoggedIn) {
@@ -830,74 +867,6 @@
       }
     };
 
-    btnClose.onclick = () => modal.style.display = "none";
-    
-    window.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-
-    // Category selection
-    kategoriSelect.addEventListener("change", () => {
-      const kategori = kategoriSelect.value;
-      pelanggaranSelect.innerHTML = '<option value="">-- Pilih Pelanggaran --</option>';
-      if (dataPelanggaran[kategori]) {
-        for (const jenis in dataPelanggaran[kategori]) {
-          const option = document.createElement("option");
-          option.value = jenis;
-          option.textContent = jenis;
-          pelanggaranSelect.appendChild(option);
-        }
-      }
-    });
-
-    // Add violation function
-    async function tambahPelanggaran() {
-      const jenjang = document.getElementById("jenjang").value.trim();
-      const nama = document.getElementById("namaSiswa").value.trim();
-      const kelas = document.getElementById("kelasSiswa").value.trim();
-      const tanggal = document.getElementById("tanggal").value;
-      const kategori = kategoriSelect.value;
-      const jenis = pelanggaranSelect.value;
-      const skor = dataPelanggaran[kategori]?.[jenis] || 0;
-
-      if (!nama || !kelas || !tanggal || !kategori || !jenis) {
-        alert("Harap isi semua data termasuk tanggal.");
-        return;
-      }
-
-      const newViolation = {
-        id: Date.now().toString(), // Simple ID generation
-        nama: nama,
-        kelas: `${jenjang} ${kelas}`,
-        tanggal: tanggal,
-        kategori: kategori,
-        jenis_pelanggaran: jenis,
-        skor: skor,
-        created_at: new Date().toISOString()
-      };
-
-      try {
-        await saveToSheet(newViolation);
-        
-        // Add to local data
-        violationData.push(newViolation);
-        renderTable();
-
-        // Reset form
-        document.getElementById("jenjang").value = "";
-        document.getElementById("namaSiswa").value = "";
-        document.getElementById("kelasSiswa").value = "";
-        document.getElementById("tanggal").value = "";
-        kategoriSelect.value = "";
-        pelanggaranSelect.innerHTML = '<option value="">-- Pilih Pelanggaran --</option>';
-        modal.style.display = "none";
-
-      } catch (error) {
-        console.error('Error adding violation:', error);
-      }
-    }
-
-    // Login function
     document.getElementById("loginBtn").onclick = () => {
       const username = document.getElementById("username").value.trim();
       const password = document.getElementById("password").value.trim();
@@ -916,88 +885,15 @@
       }
     };
 
-    // Event listeners
-    document.getElementById("btnTambah").addEventListener("click", tambahPelanggaran);
+    document.querySelector(".close").onclick = () => {
+      modal.style.display = "none";
+      if (!isLoggedIn) {
+        document.getElementById("loginSection").style.display = "block";
+        document.getElementById("formSection").style.display = "none";
+      }
+    };
 
-    // PDF Download function
-    document.getElementById("downloadPDF").addEventListener("click", () => {
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF("p", "mm", "a4");
-
-      const headers = [["No", "Nama", "Kelas", "Tanggal", "Pelanggaran", "Skor", "Kategori", "Tindakan"]];
-      const body = [];
-
-      const rows = document.querySelectorAll("#tabelHasil tr");
-      rows.forEach((row) => {
-        const rowData = Array.from(row.cells).slice(0, 8).map(cell => cell.textContent.trim());
-        body.push(rowData);
-      });
-
-      const today = new Date();
-      const tanggalCetak = `${today.getDate().toString().padStart(2, '0')}-${(today.getMonth()+1).toString().padStart(2, '0')}-${today.getFullYear()}`;
-
-      // Create PDF content
-      pdf.setFont("helvetica", "bold");
-      pdf.setFontSize(14);
-      pdf.text("REKAPITULASI PELANGGARAN SISWA", 105, 20, { align: "center" });
-
-      pdf.setFontSize(12);
-      pdf.text("SMAN 1 KARANGAN", 105, 27, { align: "center" });
-
-      pdf.setFont("helvetica", "normal");
-      pdf.setFontSize(10);
-      pdf.text("Jl. Raya Karangan No. 45, Trenggalek, Jawa Timur", 105, 33, { align: "center" });
-      pdf.text("Tel: (0355) 791540, E-mail: sman1karangan@email.sch.id", 105, 38, { align: "center" });
-
-      pdf.setDrawColor(0);
-      pdf.setLineWidth(0.5);
-      pdf.line(15, 42, 195, 42);
-
-      pdf.setFontSize(10);
-      pdf.text(`Tanggal Cetak : ${tanggalCetak}`, 15, 48);
-
-      pdf.autoTable({
-        head: headers,
-        body: body,
-        startY: 53,
-        styles: { fontSize: 8, cellPadding: 2 },
-        headStyles: { fillColor: [41, 128, 185] },
-        theme: 'grid',
-        columnStyles: {
-          4: { cellWidth: 40 } // Wider column for violations
-        }
-      });
-
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const ttdY = pageHeight - 65;
-
-      const centerKiri = 55;
-      const centerKanan = 170;
-
-      pdf.setFontSize(10);
-
-      pdf.text(`Karangan, ${tanggalCetak}`, centerKiri, ttdY, { align: 'center' });
-      pdf.text("Kepala SMAN 1 Karangan,", centerKiri, ttdY + 6, { align: 'center' });
-      pdf.text("AGUS JOKO SANTOSO,S.Pd", centerKiri, ttdY + 26, { align: 'center' });
-      pdf.text("NIP. 19670921 199003 1 005", centerKiri, ttdY + 31, { align: 'center' });
-
-      pdf.text("Mengetahui,", centerKanan, ttdY, { align: 'center' });
-      pdf.text("Tim Tata Tertib,", centerKanan, ttdY + 6, { align: 'center' });
-      pdf.text("MAHFUD, S.Pd.", centerKanan, ttdY + 26, { align: 'center' });
-      pdf.text("NIP. 196907201995121002", centerKanan, ttdY + 31, { align: 'center' });
-
-      pdf.save("rekap_pelanggaran.pdf");
-    });
-
-    // Initialize app
-    document.addEventListener('DOMContentLoaded', () => {
-      loadDataFromSheet();
-    });
-
-    // Make functions globally available
-    window.updateKelas = updateKelas;
-    window.updateNamaSiswa = updateNamaSiswa;
-    window.deleteStudent = deleteStudent;
   </script>
+  </div>
 </body>
 </html>
